@@ -1,0 +1,11 @@
+Model Information:
+* title:	Knight Artorias and Great Grey Wolf Sif
+* source:	https://sketchfab.com/3d-models/knight-artorias-and-great-grey-wolf-sif-bdf57355f95a420fa0c5b3e924bea16d
+* author:	9S (https://sketchfab.com/NlNES)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Knight Artorias and Great Grey Wolf Sif" (https://sketchfab.com/3d-models/knight-artorias-and-great-grey-wolf-sif-bdf57355f95a420fa0c5b3e924bea16d) by 9S (https://sketchfab.com/NlNES) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
