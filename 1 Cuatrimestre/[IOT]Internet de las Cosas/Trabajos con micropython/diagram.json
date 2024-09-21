@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": 4.7,
+      "left": 23.8,
+      "attrs": { "env": "micropython-20220618-v1.19.1" }
+    },
+    {
+      "type": "wokwi-analog-joystick",
+      "id": "joystick1",
+      "top": -115.8,
+      "left": 24.6,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-rgb-led",
+      "id": "rgb1",
+      "top": 52,
+      "left": -56.5,
+      "attrs": { "common": "cathode" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "joystick1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "joystick1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "joystick1:HORZ", "esp:D34", "green", [ "v0" ] ],
+    [ "joystick1:VERT", "esp:D35", "green", [ "v0" ] ],
+    [ "joystick1:SEL", "esp:D27", "green", [ "v0" ] ],
+    [ "rgb1:COM", "esp:GND.2", "green", [ "v0" ] ],
+    [ "rgb1:R", "esp:D14", "green", [ "v0" ] ],
+    [ "rgb1:G", "esp:D12", "green", [ "v0" ] ],
+    [ "rgb1:B", "esp:D13", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
