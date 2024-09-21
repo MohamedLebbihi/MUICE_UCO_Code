@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Importation de la bibliothèque A-Frame pour créer des environnements de réalité virtuelle -->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+</head>
+<body>
+    <a-scene>
+        <a-assets>
+            <!-- Ressources graphiques : textures et modèles 3D -->
+            <img id="clear-sky" src="TexturesCom_Skies0389_1_M.jpg">
+            <img id="texture-sol" src="TexturesCom_Pavement_CobblestoneOld_1K_albedo.jpg">
+            <img id="normal-sol" src="TexturesCom_Pavement_CobblestoneOld_1K_albedo.jpg">
+            
+            <!-- Modèles 3D pour le village, la boucle et le cheval -->
+            <a-asset-item id="village" src="castle/scene.gltf"></a-asset-item>
+            <a-asset-item id="loop" src="Loop/scene.gltf"></a-asset-item>
+            <a-asset-item id="cheval" src="horse/scene.gltf"></a-asset-item>
+            
+            <!-- Modèles pour la catapulte (format OBJ et MTL) -->
+            <a-asset-item id="catapulte-o" src="catapult_obj/catapult.obj"></a-asset-item>
+            <a-asset-item id="catapulte-m" src="catapult_obj/catapult.mtl"></a-asset-item>
+        </a-assets>
+        
+        <!-- Définition du ciel à l'aide d'une texture -->
+        <a-sky src="#clear-sky"></a-sky>
+        
+        <!-- Configuration de la caméra avec une position spécifique -->
+        <a-entity position="-40 25 130">
+            <a-camera></a-camera>
+        </a-entity>
+        
+        <!-- Placement et mise à l'échelle des modèles 3D dans la scène -->
+        <a-entity gltf-model="#village" scale="100 100 100" shadow="cast: true; receive: true"></a-entity>
+
+        <!-- Lumière imitant une flamme -->
+        <a-entity light="type: point; color: #FFA500; intensity: 1; distance: 150; castShadow: true"
+                  animation="property: light.intensity; dir: alternate; dur: 1000; easing: easeInOutSine; loop: true; from: 1; to: 10"
+                  animation__pos="property: position; dir: alternate; dur: 1000; easing: easeInOutSine; loop: true; from: 0 1 40; to: 0 1.2 40">
+        </a-entity>
+
+                <!-- Lumière imitant une flamme -->
+                <a-entity light="type: point; color: #FFA500; intensity: 1; distance: 200; castShadow: true"
+                animation="property: light.intensity; dir: alternate; dur: 1000; easing: easeInOutSine; loop: true; from: 1; to: 1.5"
+                animation__pos="property: position; dir: alternate; dur: 1000; easing: easeInOutSine; loop: true; from: -150 1 70; to: -150 1.2 70">
+      </a-entity>
+
+        <a-entity light="type: directional; color: #E0FFFF; intensity: 2; castShadow: true"
+        position="0 5 -5">
+</a-entity>
+
+
+        <!-- Animation complexe pour l'élément "loop" avec rotation et mouvement -->
+        <a-entity gltf-model="#loop" position="4 0 100" scale="3 3 3" 
+                  animation__rotate="property: rotation; to: 0 180 0; dur: 10000; loop: 1; easing: linear"
+                  animation__move="property: position; from: 4 0 100; to: -2 0 45; startEvents: animationcomplete__rotate; dur: 5000; easing: linear"
+                  animation__second_rotate="property: rotation; to: 0 360 0; startEvents: animationcomplete__move; dur: 5000; loop: 1; easing: linear"
+                  animation__second_move="property: position; from: -2 0 45; to: -15 0 70; startEvents: animationcomplete__second_rotate; dur: 5000; easing: linear"
+                  animation__third_rotate="property: rotation; to: 0 400 0; startEvents: animationcomplete__second_move; dur: 5000; loop: 1; easing: linear"
+                  shadow="cast: true; receive: true">
+        </a-entity>
+        
+        <!-- Positionnement et mise à l'échelle de la catapulte dans la scène -->
+        <a-entity obj-model="obj:#catapulte-o; mtl:#catapulte-m" position="-25 0 70" scale="0.002 0.002 0.002" rotation="0 200 0" shadow="cast: true; receive: true"></a-entity>
+        
+        <!-- Configuration et animation du cheval pour se déplacer dans la scène -->
+        <a-entity gltf-model="#cheval" position="-35 0 90" scale="3 3 3"
+                  animation__rotate="property: rotation; to: 0 -60 0; dur: 10000; loop: 1; easing: linear"
+                  animation__move="property: position; from: -35 0 90; to: 10 0 75; startEvents: animationcomplete__rotate; dur: 40000; easing: linear"
+                  shadow="cast: true; receive: true">
+        </a-entity>
+
+        <!-- Grand plan de sol avec texture et effets de matériau pour réalisme -->
+        <a-plane material="color: #FFFFFF; src: #texture-sol; repeat: 5000 5000;
+                  normal-map: #normal-sol; normal-texture-repeat: 5000 5000; roughness: 0.5;"
+                  rotation="-90 0 0" 
+                  scale="10000 10000 1" shadow="receive: true"></a-plane>
+    </a-scene>
+</body>
+</html>
